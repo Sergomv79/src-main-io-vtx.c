@@ -139,7 +139,7 @@ STATIC_UNIT_TESTED vtxSettingsConfig_t vtxGetSettings(void)
 
 static bool vtxProcessBandAndChannel(vtxDevice_t *vtxDevice)
 {
-    if (!ARMING_FLAG(ARMED)) {
+    //if (!ARMING_FLAG(ARMED)) {//
         uint8_t vtxBand;
         uint8_t vtxChan;
         if (vtxCommonGetBandAndChannel(vtxDevice, &vtxBand, &vtxChan)) {
@@ -147,7 +147,7 @@ static bool vtxProcessBandAndChannel(vtxDevice_t *vtxDevice)
             if (vtxBand != settings.band || vtxChan != settings.channel) {
                 vtxCommonSetBandAndChannel(vtxDevice, settings.band, settings.channel);
                 return true;
-            }
+           // }//
         }
     }
     return false;
@@ -156,14 +156,14 @@ static bool vtxProcessBandAndChannel(vtxDevice_t *vtxDevice)
 #if defined(VTX_SETTINGS_FREQCMD)
 static bool vtxProcessFrequency(vtxDevice_t *vtxDevice)
 {
-    if (!ARMING_FLAG(ARMED)) {
+    //if (!ARMING_FLAG(ARMED)) {//
         uint16_t vtxFreq;
         if (vtxCommonGetFrequency(vtxDevice, &vtxFreq)) {
             const vtxSettingsConfig_t settings = vtxGetSettings();
             if (vtxFreq != settings.freq) {
                 vtxCommonSetFrequency(vtxDevice, settings.freq);
                 return true;
-            }
+           // }//
         }
     }
     return false;
